@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculator {
@@ -9,13 +10,18 @@ public class StringCalculator {
         if (numbers.equals(""))
             return 0;
         String customDelimiter;
-        if (numbers.contains("//")) {
+        if (numbers.startsWith("//")) {
             int newLineIndex = numbers.indexOf('\n');
-            customDelimiter = numbers.substring(2, newLineIndex);
+            customDelimiter = "|" + numbers.substring(2, newLineIndex);
+            customDelimiter = customDelimiter.replace("[", "");
+            customDelimiter = customDelimiter.replace("]", "");
+            customDelimiter = customDelimiter.replace("*", "\\*");
+
             numbers = numbers.substring(newLineIndex + 1);
         } else
             customDelimiter = "";
-        String[] sNumbers = numbers.split("[,\n" + customDelimiter + "]");
+
+        String[] sNumbers = numbers.split("(,|\n" + customDelimiter + ")");
         int count = 0;
         List<String> negativeNumbers = new ArrayList<>();
         for (String v : sNumbers) {
