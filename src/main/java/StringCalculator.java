@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculator {
+    int addCalledCount = 0;
+
     public int add(String numbers) {
+        addCalledCount++;
         if (numbers.equals(""))
             return 0;
         String customDelimiter;
@@ -24,5 +27,9 @@ public class StringCalculator {
         if (negativeNumbers.size() > 0)
             throw new IllegalArgumentException("Negatives not allowed" + (negativeNumbers.size() > 1 ? (" " + String.join(",", negativeNumbers)) : ""));
         return count;
+    }
+
+    public int getCalledCount() {
+        return addCalledCount;
     }
 }
