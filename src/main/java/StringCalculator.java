@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
     public int add(String numbers) {
         if (numbers.equals(""))
@@ -11,12 +14,15 @@ public class StringCalculator {
             customDelimiter = "";
         String[] sNumbers = numbers.split("[,\n" + customDelimiter + "]");
         int count = 0;
+        List<String> negativeNumbers = new ArrayList<>();
         for (String v : sNumbers) {
             int number = Integer.parseInt(v.trim());
             if (number < 0)
-                throw new IllegalArgumentException("Negatives not allowed");
+                negativeNumbers.add(v.trim());
             count += number;
         }
+        if (negativeNumbers.size() > 0)
+            throw new IllegalArgumentException("Negatives not allowed" + (negativeNumbers.size() > 1 ? (" " + String.join(",", negativeNumbers)) : ""));
         return count;
     }
 }
