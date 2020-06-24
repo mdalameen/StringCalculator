@@ -22,7 +22,8 @@ public class StringCalculator {
             int number = Integer.parseInt(v.trim());
             if (number < 0)
                 negativeNumbers.add(v.trim());
-            count += number;
+            if (number <= 1000)
+                count += number;
         }
         if (negativeNumbers.size() > 0)
             throw new IllegalArgumentException("Negatives not allowed" + (negativeNumbers.size() > 1 ? (" " + String.join(",", negativeNumbers)) : ""));

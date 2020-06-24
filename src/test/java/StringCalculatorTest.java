@@ -58,4 +58,9 @@ public class StringCalculatorTest {
         stringCalculator.add("//;\n1;3");
         Assert.assertEquals(1, stringCalculator.getCalledCount());
     }
+
+    @Test
+    public void greaterThanThousandShouldIgnored() {
+        Assert.assertEquals(2, stringCalculator.add("2,1001"));
+    }
 }
