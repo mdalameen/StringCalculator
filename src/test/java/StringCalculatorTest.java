@@ -4,29 +4,35 @@ import org.junit.Test;
 
 public class StringCalculatorTest {
     StringCalculator stringCalculator;
+
     @Before
-    public void init(){
+    public void init() {
         stringCalculator = new StringCalculator();
     }
 
     @Test
-    public void getZeroForEmptyString(){
+    public void getZeroForEmptyString() {
         Assert.assertEquals(0, stringCalculator.add(""));
     }
 
     @Test
-    public void sumOfOneInteger(){
+    public void sumOfOneInteger() {
         Assert.assertEquals(1, stringCalculator.add("1"));
     }
 
     @Test
-    public void sumOfTwoInteger(){
+    public void sumOfTwoInteger() {
         Assert.assertEquals(3, stringCalculator.add("1,2"));
     }
 
     @Test
-    public void addNumbersWithNewLine(){
+    public void addNumbersWithNewLine() {
         Assert.assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
+
+    @Test
+    public void supportDifferentDelimiter() {
+        Assert.assertEquals(4, stringCalculator.add("//;\n1;3"));
     }
 
 }
