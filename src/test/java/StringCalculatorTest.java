@@ -24,4 +24,9 @@ public class StringCalculatorTest {
         Assert.assertEquals(3, stringCalculator.add("1,2"));
     }
 
+    @Test
+    public void addNumbersWithNewLine(){
+        Assert.assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
+
 }

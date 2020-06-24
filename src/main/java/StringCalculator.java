@@ -3,7 +3,7 @@ public class StringCalculator {
         if (numbers.equals(""))
             return 0;
 
-        String[] sNumbers = numbers.split(",");
+        String[] sNumbers = numbers.split("[,\n]");
         int count = 0;
         for(String v : sNumbers){
             count += Integer.parseInt(v.trim());
