@@ -12,7 +12,10 @@ public class StringCalculator {
         String[] sNumbers = numbers.split("[,\n" + customDelimiter + "]");
         int count = 0;
         for (String v : sNumbers) {
-            count += Integer.parseInt(v.trim());
+            int number = Integer.parseInt(v.trim());
+            if (number < 0)
+                throw new IllegalArgumentException("Negatives not allowed");
+            count += number;
         }
         return count;
     }
